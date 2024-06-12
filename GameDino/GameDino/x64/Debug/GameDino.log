@@ -1,0 +1,3 @@
+﻿  GameDino.cpp
+C:\Study\C++\2_semestr\GameDino\GameDino\GameDino.cpp(38,35): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  GameDino.vcxproj -> C:\Study\C++\2_semestr\GameDino\x64\Debug\GameDino.exe

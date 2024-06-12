@@ -1,0 +1,350 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <windows.h>
+#include <cstdlib>
+#include <ctime>
+#include <random>
+
+enum Terrain { Plain, River, Mountain };
+enum Dinosaurus { Tyrannosaur = 1, Stegosaurus = 2, Triceraptor = 3 };
+int damageValue;
+
+class Dino {
+protected:
+    int strength = std::rand() % 8 + 10;
+    int agility = std::rand() % 10 + 10;
+    int intelligence = std::rand() % 20 + 5;
+public:
+    virtual double damage() = 0;
+};
+
+class DinoTyrannosaur : public Dino {
+public:
+    double damage() override {
+        damageValue = damageValue + strength * 1.5;
+        return damageValue;
+    }
+};
+
+class DinoStegosaurus : public Dino {
+public:
+    double damage() override {
+        damageValue = damageValue + agility * 1.7;
+        return damageValue;
+    }
+};
+
+class DinoTriceraptor : public Dino {
+public:
+    double damage() override {
+        damageValue = damageValue + intelligence * 2.1;
+        return damageValue;
+    }
+};
+
+class Player {
+public:
+    double damage(Dino* dino) {
+        return dino->damage(); // return results of method damage()
+    }
+};
+
+int main()
+{
+    bool runProgram;
+    int option, variant_toBuy, cntChoosenDino1, cntChoosenDino2, cntChoosenDino3, cntHaveDino1, cntHaveDino2, cntHaveDino3, userDinoHealth, botDinoHealth, dinoUser, dinoBot, coinsUser, coinsEarned, userAttack, botAttack;
+    std::string inventory, pullUser, pullBot, dinoBot1, dinoBot2, dinoBot3, file_name;
+    std::string listDinosaurus[3]{"Tyrannosaur", "Stegosaurus", "Triceraptor" };
+
+    coinsEarned = 0;
+    runProgram = true;
+
+    while (runProgram) {
+        cntChoosenDino1 = cntChoosenDino2 = cntChoosenDino3 = cntHaveDino1 = cntHaveDino2 = cntHaveDino3 = 0;
+        std::cout << "Main menu" << std::endl;
+        std::cout << "Coins earned: " << coinsEarned << std::endl;
+        coinsEarned = 0;
+
+        std::string line;
+        std::ifstream in("coins.txt");
+        if (in.is_open())
+        {
+            while (std::getline(in, line))
+            {
+                std::cout << "BALANCE:" << line << std::endl;
+                coinsUser = std::stoi(line);
+            }
+        }
+        in.close();
+
+        std::cout << "Choose option:" << std::endl;
+        std::cout << "\n 1) Exit \n 2) Fight! \n 3) Shop \n";
+        std::cin >> option;
+
+        if (option == 2) {
+            std::cout << "Choose your fighters:" << std::endl;
+
+            std::string line;
+            std::ifstream in("dino_numbers.txt");
+            if (in.is_open())
+            {
+                while (std::getline(in, line)) {
+                    for (auto choosenDino : line) {
+                        if (choosenDino - 48 == 1) {
+                            std::cout << "1) Teranosavr" << std::endl;
+                            cntHaveDino1++;
+                        }
+                        if (choosenDino - 48 == 2) {
+                            std::cout << "2) Diplodog" << std::endl;
+                            cntHaveDino2++;
+                        }
+                        if (choosenDino - 48 == 3) {
+                            std::cout << "3) Triceratops" << std::endl;
+                            cntHaveDino3++;
+                        }
+                    }
+                    std::cout << "Select your pull:";
+                    std::cin >> pullUser;
+
+                    for (auto choosenDino : pullUser) {
+                        if (choosenDino - 48 == 1) {
+                            cntChoosenDino1++;
+                        }
+                        if (choosenDino - 48 == 2) {
+                            cntChoosenDino2++;
+                        }
+                        if (choosenDino - 48 == 3) {
+                            cntChoosenDino3++;
+                        }
+                    }
+                }
+            }
+
+            in.close();
+            if (cntHaveDino1 >= cntChoosenDino1 && cntHaveDino2 >= cntChoosenDino2 && cntHaveDino3 >= cntChoosenDino3) {
+                std::ofstream out;
+                out.open("dino_numbers.txt");
+                if (out.is_open())
+                {
+                    std::string line;
+                    for (int i = 0; i < (cntHaveDino1 - cntChoosenDino1); ++i) {
+                        line = line + "1";
+                    }
+                    for (int i = 0; i < (cntHaveDino2 - cntChoosenDino2); ++i) {
+                        line = line + "2";
+                    }
+                    for (int i = 0; i < (cntHaveDino3 - cntChoosenDino3); ++i) {
+                        line = line + "3";
+                    }
+                    out << line;
+                }
+                out.close();
+            }
+            else
+            {
+                std::cout << "incorrect pull. You have not enough dinosaurus." << std::endl;
+                continue;
+            }
+
+
+            std::system("cls");
+            std::srand(std::time(0));
+
+            dinoBot1 = std::to_string(std::rand() % 3 + 1);
+            dinoBot2 = std::to_string(std::rand() % 3 + 1);
+            dinoBot3 = std::to_string(std::rand() % 3 + 1);
+            pullBot = dinoBot1 + dinoBot2 + dinoBot3;
+            std::cout << pullBot;
+            userDinoHealth = 100;
+            botDinoHealth = 100;
+            dinoUser = pullUser[0] - 48;
+            Player player;
+            DinoTyrannosaur dinoTyrannosaur;
+            DinoStegosaurus dinoStegosaurus;
+            DinoTriceraptor dinoTriceraptor;
+
+            switch (dinoUser) {
+            case Dinosaurus::Tyrannosaur:
+                userAttack = player.damage(&dinoTyrannosaur);
+                break;
+            case Dinosaurus::Stegosaurus:
+                userAttack = player.damage(&dinoStegosaurus);
+                break;
+            case Dinosaurus::Triceraptor:
+                userAttack = player.damage(&dinoTriceraptor);
+                break;
+            }
+
+            std::random_device rd;
+            std::mt19937 gen(rd());
+            std::uniform_int_distribution<int> distribution(0, 2);
+            int randomIndex = distribution(gen);
+            Terrain randomTerrain = static_cast<Terrain>(randomIndex);
+
+            while (pullUser.length() != 0 && pullBot.length() != 0)
+            {
+                std::system("cls");
+                dinoUser = pullUser[0] - 48;
+
+                dinoBot = pullBot[0];
+                switch (randomTerrain) {
+                case Terrain::Plain:
+                    std::cout << "-------CURRENT TERRAIN: PLAIN------- \n" << std::endl;
+                    break;
+                case Terrain::River:
+                    std::cout << "-------CURRENT TERRAIN: RIVER------- \n" << std::endl;
+                    break;
+                case Terrain::Mountain:
+                    std::cout << "-------CURRENT TERRAIN: MOUNTAIN------- \n" << std::endl;
+                }
+
+                std::cout << "User dinosaur: ";
+                switch (dinoUser) {
+                case Dinosaurus::Tyrannosaur:
+                    std::cout << "Tyrannosaur" << std::endl;
+                    file_name = "Tyrannosaur.txt";
+                    break;
+                case Dinosaurus::Stegosaurus:
+                    std::cout << "Stegosaurus" << std::endl;
+                    file_name = "Stegosaurus.txt";
+                    break;
+                case Dinosaurus::Triceraptor:
+                    std::cout << "Triceraptor" << std::endl;
+                    file_name = "Triceraptor.txt";
+                    break;
+                }
+                std::ifstream in1(file_name);
+                std::string line1;
+                while (std::getline(in1, line1)) {
+                    std::cout << line1 << std::endl;
+                }
+                in1.close();
+
+                botAttack = std::rand() % 20 + 10;
+                std::cout << "\n Damage taken -" << botAttack << std::endl;
+                for (int i = 0; i < userDinoHealth; i++) {
+                    std::cout << "|";
+                }
+                std::cout << "\n";
+                std::cout << "------------------------------------------------------------------------------------------------------------------------";
+                std::cout << "\n";
+
+                std::cout << "Bot dinosaur: ";
+                switch (dinoBot) {
+                case Dinosaurus::Tyrannosaur:
+                    std::cout << "Tyrannosaur" << std::endl;
+                    file_name = "Tyrannosaur.txt";
+                    break;
+                case Dinosaurus::Stegosaurus:
+                    std::cout << "Stegosaurus" << std::endl;
+                    file_name = "Stegosaurus.txt";
+                    break;
+                case Dinosaurus::Triceraptor:
+                    std::cout << "Triceraptor" << std::endl;
+                    file_name = "Triceraptor.txt";
+                    break;
+                }
+                std::ifstream in2(file_name);
+                std::string line2;
+                while (std::getline(in2, line2)) {
+                    std::cout << line2 << std::endl;
+                }
+                in2.close();
+
+                std::cout << "\n Damage taken -" << userAttack << std::endl;
+                for (int i = 0; i < botDinoHealth; i++) {
+                    std::cout << "|";
+                }
+
+                std::cout << "\n\n";
+                userDinoHealth = userDinoHealth - botAttack;
+                if ((randomTerrain == 0 && dinoUser == 1) || (randomTerrain == 1 && dinoUser == 2) || (randomTerrain == 2 && dinoUser == 3)) {
+                    botDinoHealth = botDinoHealth - (userAttack * 2);
+                }
+                else {
+                    botDinoHealth = botDinoHealth - userAttack;
+                }
+
+                if (userDinoHealth <= 0) {
+                    int numberDinoDied = pullUser[0] - 48;
+                    std::cout << "Users dino " << listDinosaurus[numberDinoDied] << " died." << std::endl;
+                    pullUser.erase(pullUser.begin());
+                    userDinoHealth = 100;
+                }
+                if (botDinoHealth <= 0) {
+                    int numberDinoDied = pullUser[0] - 48;
+                    std::cout << "Bots dino " << listDinosaurus[numberDinoDied] << " died." << std::endl;
+                    pullBot.erase(pullBot.begin());
+                    coinsEarned = coinsEarned + (std::rand() % 10 + 10);
+                    coinsUser = coinsUser + coinsEarned;
+                    botDinoHealth = 100;
+                }
+                Sleep(1000);
+            }
+        }
+
+        if (option == 3) {
+            std::cout << "Choose number of dino that you want to buy: \n" << std::endl;
+            std::cout << "1) Tyrannosaur. Cost 20 coins." << std::endl;
+            std::cout << "2) Stegosaurus. Cost 15 coins." << std::endl;
+            std::cout << "3) Triceraptor. Cost 10 coins." << std::endl;
+
+            std::cin >> variant_toBuy;
+
+            if (variant_toBuy == 1) {
+                if (coinsUser >= 20) {
+                    coinsUser = coinsUser - 20;
+                    std::ofstream out;
+                    out.open("dino_numbers.txt", std::ios::app);
+                    out << 1;
+                }
+                else
+                {
+                    std::cout << "You haven't enough money" << std::endl;
+                }
+            }
+
+            if (variant_toBuy == 2) {
+                if (coinsUser >= 15) {
+                    coinsUser = coinsUser - 15;
+                    std::ofstream out;
+                    out.open("dino_numbers.txt", std::ios::app);
+                    out << 2;
+                }
+                else
+                {
+                    std::cout << "You haven't enough money";
+                }
+            }
+
+            if (variant_toBuy == 3) {
+                if (coinsUser >= 10) {
+                    coinsUser = coinsUser - 10;
+                    std::ofstream out;
+                    out.open("dino_numbers.txt", std::ios::app);
+                    out << 3;
+                }
+                else
+                {
+                    std::cout << "You haven't enough money";
+                }
+            }
+        }
+
+        if (option == 1) {
+            runProgram = false;
+            break;
+        }
+
+        std::ofstream out;
+        out.open("coins.txt");
+        if (out.is_open())
+        {
+            out << coinsUser << std::endl;
+        }
+        out.close();
+    }
+
+    return 0;
+}

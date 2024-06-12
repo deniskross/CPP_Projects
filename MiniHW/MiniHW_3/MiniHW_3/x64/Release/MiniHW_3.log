@@ -1,0 +1,8 @@
+﻿  MiniHW_3.cpp
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(15,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода
+  2 of 128 functions ( 1.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  MiniHW_3.vcxproj -> C:\Study\C++\2_semestr\MiniHW\MiniHW_3\x64\Release\MiniHW_3.exe

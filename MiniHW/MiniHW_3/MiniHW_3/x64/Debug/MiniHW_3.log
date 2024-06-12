@@ -1,0 +1,41 @@
+﻿  MiniHW_3.cpp
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(16,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,67): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,67): warning C4244:         with
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,67): warning C4244:         [
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,67): warning C4244:             T=float
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,67): warning C4244:         ]
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,54): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,54): warning C4244:         with
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,54): warning C4244:         [
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,54): warning C4244:             T=float
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(55,54): warning C4244:         ]
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,101): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,101): warning C4244:         with
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,101): warning C4244:         [
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,101): warning C4244:             T=unsigned int
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,101): warning C4244:         ]
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,57): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,57): warning C4244:         with
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,57): warning C4244:         [
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,57): warning C4244:             T=unsigned int
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(56,57): warning C4244:         ]
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,77): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,77): warning C4244:         with
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,77): warning C4244:         [
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,77): warning C4244:             T=int
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,77): warning C4244:         ]
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,77): warning C4244:         and
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,77): warning C4244:         [
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,77): warning C4244:             T=float
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,77): warning C4244:         ]
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,65): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,65): warning C4244:         with
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,65): warning C4244:         [
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,65): warning C4244:             T=int
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,65): warning C4244:         ]
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,65): warning C4244:         and
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,65): warning C4244:         [
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,65): warning C4244:             T=float
+C:\Study\C++\2_semestr\MiniHW\MiniHW_3\MiniHW_3\MiniHW_3.cpp(70,65): warning C4244:         ]
+  MiniHW_3.vcxproj -> C:\Study\C++\2_semestr\MiniHW\MiniHW_3\x64\Debug\MiniHW_3.exe
