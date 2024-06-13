@@ -58,7 +58,7 @@ public:
 int main() {
     int coinsEarned = 0, coinsUser = 0, cntUserTyrannosaurus = 0, cntUserStegosaurus = 0, cntUserTriceraptor = 0;
         
-    sf::RenderWindow window(sf::VideoMode(1200, 800), "Dino Battle");
+    sf::RenderWindow window(sf::VideoMode(1200, 800), "Dinosaurs Battlesauce");
     window.setFramerateLimit(60);
     sf::Event event;
 
