@@ -2,28 +2,28 @@
 
 void handleShop(sf::Event& event, sf::RenderWindow& window, sf::Font& font, sf::Text& balance,\
 	sf::Text& earnedBalance, int& coinsUser, int& cntUserTyrannosaurus, int& cntUserStegosaurus, \
-	int& cntUserTriceraptor)
+	int& cntUserTriceratops)
 {
 	//Создание текстур и загрузка картинок
-	sf::Texture shopBackground, nameTyrannosaurusTexture, nameStegosaurusTexture, nameTriceraptorTexture, \
+	sf::Texture shopBackground, nameTyrannosaurusTexture, nameStegosaurusTexture, nameTriceratopsTexture, \
 	TyrannosaurusTexture, StegosaurusTexture, TriceraptorTexture;
 	shopBackground.loadFromFile("images/shop.png");
 	nameTyrannosaurusTexture.loadFromFile("images/shop-nameTyrannosaurus.png");
 	nameStegosaurusTexture.loadFromFile("images/shop-nameStegosaurus.png");
-	nameTriceraptorTexture.loadFromFile("images/shop-nameTriceraptor.png");
+	nameTriceratopsTexture.loadFromFile("images/shop-nameTriceratops.png");
 	TyrannosaurusTexture.loadFromFile("images/shop-Tyrannosaurus-compressed.png");
 	StegosaurusTexture.loadFromFile("images/shop-Stegosaurus-compressed.png");
-	TriceraptorTexture.loadFromFile("images/shop-Triceraptor-compressed.png");
-	sf::Sprite shopBg(shopBackground), nameTyrannosaurus(nameTyrannosaurusTexture), nameStegosaurus(nameStegosaurusTexture), nameTriceraptor(nameTriceraptorTexture), \
-		Tyrannosaurus(TyrannosaurusTexture), Stegosaurus(StegosaurusTexture), Triceraptor(TriceraptorTexture);
+	TriceraptorTexture.loadFromFile("images/shop-Triceratops-compressed.png");
+	sf::Sprite shopBg(shopBackground), nameTyrannosaurus(nameTyrannosaurusTexture), nameStegosaurus(nameStegosaurusTexture), nameTriceratops(nameTriceratopsTexture), \
+		Tyrannosaurus(TyrannosaurusTexture), Stegosaurus(StegosaurusTexture), Triceratops(TriceraptorTexture);
 	
 	//Счетчик количества динозавров
 	sf::Text cntUserTyrannosaurusText("", font, 70);//создаем объект текст. закидываем в объект текст строку, шрифт, размер шрифта(в пикселях);//сам объект текст (не строка)
 	cntUserTyrannosaurusText.setStyle(sf::Text::Bold);//жирный текст
 	sf::Text cntUserStegosaurusText("", font, 70);//создаем объект текст. закидываем в объект текст строку, шрифт, размер шрифта(в пикселях);//сам объект текст (не строка)
 	cntUserStegosaurusText.setStyle(sf::Text::Bold);//жирный текст
-	sf::Text cntUserTriceraptorText("", font, 70);//создаем объект текст. закидываем в объект текст строку, шрифт, размер шрифта(в пикселях);//сам объект текст (не строка)
-	cntUserTriceraptorText.setStyle(sf::Text::Bold);//жирный текст
+	sf::Text cntUserTriceratopsText("", font, 70);//создаем объект текст. закидываем в объект текст строку, шрифт, размер шрифта(в пикселях);//сам объект текст (не строка)
+	cntUserTriceratopsText.setStyle(sf::Text::Bold);//жирный текст
 	
 	//Задаем координаты спрайтам
 	int pickNum = 0;
@@ -32,11 +32,11 @@ void handleShop(sf::Event& event, sf::RenderWindow& window, sf::Font& font, sf::
 	Tyrannosaurus.setPosition(750, 110);
 	nameStegosaurus.setPosition(600, 300);
 	Stegosaurus.setPosition(750, 360);
-	nameTriceraptor.setPosition(600, 550);
-	Triceraptor.setPosition(750, 610);
+	nameTriceratops.setPosition(600, 550);
+	Triceratops.setPosition(750, 610);
 	cntUserTyrannosaurusText.setPosition(50, 200);
 	cntUserStegosaurusText.setPosition(50, 300);
-	cntUserTriceraptorText.setPosition(50, 400);
+	cntUserTriceratopsText.setPosition(50, 400);
 
 	while (window.isOpen() && !sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		while (window.pollEvent(event)) {
@@ -47,7 +47,7 @@ void handleShop(sf::Event& event, sf::RenderWindow& window, sf::Font& font, sf::
 
 		nameTyrannosaurus.setColor(sf::Color::White);
 		nameStegosaurus.setColor(sf::Color::White);
-		nameTriceraptor.setColor(sf::Color::White);
+		nameTriceratops.setColor(sf::Color::White);
 		window.clear();
 
 		//Наведение курсора на кнопку покупки
@@ -63,8 +63,8 @@ void handleShop(sf::Event& event, sf::RenderWindow& window, sf::Font& font, sf::
 			nameStegosaurus.setColor(sf::Color::Blue);
 			pickNum = 2;
 		}
-		if (nameTriceraptor.getGlobalBounds().contains(worldPos)) {
-			nameTriceraptor.setColor(sf::Color::Blue);
+		if (nameTriceratops.getGlobalBounds().contains(worldPos)) {
+			nameTriceratops.setColor(sf::Color::Blue);
 			pickNum = 3;
 		}
 
@@ -90,12 +90,12 @@ void handleShop(sf::Event& event, sf::RenderWindow& window, sf::Font& font, sf::
 			}
 			if (pickNum == 3 && !mousePressed) {
 				if (coinsUser >= 10) {
-					nameTriceraptor.setColor(sf::Color::Green);
-					cntUserTriceraptor++;
+					nameTriceratops.setColor(sf::Color::Green);
+					cntUserTriceratops++;
 					coinsUser -= 10;
 					mousePressed = true;
 				}
-				else { nameTriceraptor.setColor(sf::Color::Red); }
+				else { nameTriceratops.setColor(sf::Color::Red); }
 			}
 		}
 		else {
@@ -106,22 +106,22 @@ void handleShop(sf::Event& event, sf::RenderWindow& window, sf::Font& font, sf::
 		//Обновление количества дино
 		cntUserTyrannosaurusText.setString("Tyrannosaurus: " + std::to_string(cntUserTyrannosaurus));
 		cntUserStegosaurusText.setString("Stegosaurus: " + std::to_string(cntUserStegosaurus));
-		cntUserTriceraptorText.setString("Triceraptor: " + std::to_string(cntUserTriceraptor));
+		cntUserTriceratopsText.setString("Triceratops: " + std::to_string(cntUserTriceratops));
 
 		window.draw(shopBg);
 		window.draw(nameTyrannosaurus);
 		window.draw(Tyrannosaurus);
 		window.draw(nameStegosaurus);
 		window.draw(Stegosaurus);
-		window.draw(nameTriceraptor);
-		window.draw(Triceraptor);
+		window.draw(nameTriceratops);
+		window.draw(Triceratops);
 		window.draw(balance);
 		window.draw(earnedBalance);
 
 		// Вывод количества дино в инвентаре
 		window.draw(cntUserTyrannosaurusText);
 		window.draw(cntUserStegosaurusText);
-		window.draw(cntUserTriceraptorText);
+		window.draw(cntUserTriceratopsText);
 		window.display();
 
 		

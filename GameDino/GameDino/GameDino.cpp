@@ -40,7 +40,7 @@ public:
     }
 };
 
-class DinoTriceraptor : public Dino {
+class DinoTriceratops : public Dino {
 public:
     double damage() override {
         damageValue = damageValue + intelligence * 1;
@@ -56,7 +56,7 @@ public:
 };
 
 int main() {
-    int coinsEarned = 0, coinsUser = 0, cntUserTyrannosaurus = 0, cntUserStegosaurus = 0, cntUserTriceraptor = 0;
+    int coinsEarned = 0, coinsUser = 0, cntUserTyrannosaurus = 0, cntUserStegosaurus = 0, cntUserTriceratops = 0;
         
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Dinosaurs Battlesauce");
     window.setFramerateLimit(60);
@@ -79,12 +79,12 @@ int main() {
         // Читаем по одному числу из каждой строки
         inDinos >> cntUserTyrannosaurus;
         inDinos >> cntUserStegosaurus;
-        inDinos >> cntUserTriceraptor;
+        inDinos >> cntUserTriceratops;
     }
     inDinos.close();
 
     //Вызов меню
-    menu(event, window, coinsEarned, coinsUser, cntUserTyrannosaurus, cntUserStegosaurus, cntUserTriceraptor);
+    menu(event, window, coinsEarned, coinsUser, cntUserTyrannosaurus, cntUserStegosaurus, cntUserTriceratops);
 
     std::ofstream outCoins("coins.txt");
     if (outCoins.is_open()) {
@@ -98,7 +98,7 @@ int main() {
         // Записываем новые числа в файл построчно
         outDinos << cntUserTyrannosaurus << std::endl;
         outDinos << cntUserStegosaurus << std::endl;
-        outDinos << cntUserTriceraptor << std::endl;
+        outDinos << cntUserTriceratops << std::endl;
     }
     outDinos.close();
 
