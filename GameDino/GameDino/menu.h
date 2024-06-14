@@ -69,7 +69,8 @@ void menu(sf::Event& event, sf::RenderWindow& window, int& coinsEarned,\
 				if (menuNum == 1) { window.close(); }//если нажали первую кнопку, то выходим из меню 
 				if (menuNum == 2) { handleFight(event, window, font, terrainTexture, \
 					nameTerrain, balance, earnedBalance, \
-					cntUserTyrannosaurus, cntUserStegosaurus, cntUserTriceraptor); while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && window.isOpen()); }
+					cntUserTyrannosaurus, cntUserStegosaurus, cntUserTriceraptor, \
+				coinsUser, coinsEarned); while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && window.isOpen()); }
 				if (menuNum == 3) { handleShop(event, window, font, balance, earnedBalance, coinsUser,\
 					cntUserTyrannosaurus, cntUserStegosaurus, cntUserTriceraptor); while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && window.isOpen()); }
 				if (menuNum == 4) {handleInventory(event, window, font, balance, earnedBalance, \

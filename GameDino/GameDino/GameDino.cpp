@@ -12,49 +12,6 @@
 #include "menu.h"
 #include "handleFight.h"
 
-enum Dinosaurus {Tyranosaurus = 1, Stegosaurus = 2, Triceraptor = 3};
-int damageValue;
-
-class Dino {
-protected:
-    int strength = std::rand() % 10 + 5;
-    int agility = std::rand() % 10 + 5;
-    int intelligence = std::rand() % 10 + 5;
-public:
-    virtual double damage() = 0;
-};
-
-class DinoTyrannosaurus : public Dino {
-public:
-    double damage() override {
-        damageValue = damageValue + strength * 2;
-        return damageValue;
-    }
-};
-
-class DinoStegosaurus : public Dino {
-public:
-    double damage() override {
-        damageValue = damageValue + agility * 1.5;
-        return damageValue;
-    }
-};
-
-class DinoTriceratops : public Dino {
-public:
-    double damage() override {
-        damageValue = damageValue + intelligence * 1;
-        return damageValue;
-    }
-};
-
-class Player {
-public:
-    double damage(Dino* dino) {
-        return dino->damage(); // return results of method damage()
-    }
-};
-
 int main() {
     int coinsEarned = 0, coinsUser = 0, cntUserTyrannosaurus = 0, cntUserStegosaurus = 0, cntUserTriceratops = 0;
         
